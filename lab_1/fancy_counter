@@ -1,0 +1,40 @@
+Library IEEE;
+Use ieee.std_logic_1164.ALL;
+Use ieee.std_logic_arith.ALL;
+Use ieee.std_logic_unsigned.ALL;
+
+entity fancy_counter is
+port(
+	clk,clk_en,dir,updn,rst,en,ld: in std_logic;
+	val :in std_logic_vector (3 downto 0);         -- switch input
+	cnt : out std_logic_vector (3 downto 0));   -- led output 
+
+end fancy_counter
+ 
+Architecture behavioral of fancy_counter is
+
+signal val: std_logic_vector (3 downto 0) := ‘0000’;
+
+begin 
+process (CLK, ClrN)
+Begin
+if en = ‘1’ then
+if en = ‘1’ and clk_en = ‘0’
+	
+if rst = '0' then
+cnt <="0000";
+if ld = 1 
+	cnt <= val;
+elsif rising_edge(clk) and en  ='0' then
+cnt <= cnt;
+elsif rising_edge(clk) = '1' and en ='1' and='1' then
+cnt <= cnt +1;
+elsif rising_edge(clk) and en = '1' and ='0' then
+cnt <= cnt -1;
+end if;
+end if; 
+end if;
+end if;
+cnt <= cnt;
+end process; 
+end behavioral;
