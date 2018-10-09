@@ -1,0 +1,35 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.numeric_std.ALL;
+  
+entity debounce is       -- define entity
+port ( 
+    	clk : in std_logic;
+	btn : in std_logic;
+	dbnc : out std_logic;
+   	cnt: out std_logic_vector(26 downto 0)
+       ); 
+end debounce;
+
+Architecture behavior of debounce is
+	Signal tem : std_logic_vector (26 downto 0);
+
+Begin 
+process(clk)
+	Begin
+if(rising_edge(clk)) then
+	if(btn = ‘1’) then
+		tem <= (other => ‘0’);
+		dbnc <= ‘1’;
+	else 
+		tem <= std_logic_vector( unsigned(tem) + 1);
+		if(unsigned(tem) >= 5) then
+			Dbnc <= ‘0’;
+		end if;
+	end if;
+end if;
+		
+end process;
+
+	cnt <= tem;
+End behavior
